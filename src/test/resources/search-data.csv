@@ -1,0 +1,6 @@
+query,expectedResult
+docker,positive
+install,positive
+YouTrack,positive
+asdfghjklqwerty,negative
+!@#$%^,negative

@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Selenium Test Suite" parallel="classes" thread-count="3">
+
+    <test name="All Tests">
+        <classes>
+            <class name="ThemeTest"/>
+            <class name="SearchTest"/>
+            <class name="ListTest"/>
+            <class name="PageTest"/>
+            <class name="LinksTest"/>
+        </classes>
+    </test>
+
+</suite>
