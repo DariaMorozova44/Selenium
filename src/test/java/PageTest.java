@@ -1,21 +1,16 @@
-import org.example.PageObjectPages;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
+import pagetests.PageObjectPages;
 
 import static org.testng.Assert.assertNotEquals;
 
-public class PageTest extends BaseTest{
-    private WebDriverWait wait;
+public class PageTest extends BaseTest {
+
     private PageObjectPages pageObjectPages;
 
-
-    @BeforeMethod
-    public void initPage() {
+    @Override
+    protected void initPage() {
         pageObjectPages = new PageObjectPages(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
     }
 
     @Test

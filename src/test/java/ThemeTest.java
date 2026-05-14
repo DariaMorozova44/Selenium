@@ -1,19 +1,5 @@
-import org.apache.commons.io.FileUtils;
-import org.example.PageObjectLinks;
-import org.example.PageObjectTheme;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.io.File;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import pagetests.PageObjectTheme;
 
 import static org.testng.Assert.*;
 
@@ -21,9 +7,8 @@ public class ThemeTest extends BaseTest {
 
     private PageObjectTheme themePage;
 
-
-    @BeforeMethod
-    public void initPage() {
+    @Override
+    protected void initPage() {
         themePage = new PageObjectTheme(driver);
     }
 

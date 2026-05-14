@@ -1,15 +1,15 @@
-import org.example.PageObjectLinks;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pagetests.PageObjectLinks;
 
 import static org.testng.Assert.assertTrue;
 
-public class LinksTest extends BaseTest{
+public class LinksTest extends BaseTest {
     private PageObjectLinks pageObjectLinks;
 
-    @BeforeMethod
-    public void initPage() {
+    @Override
+    protected void initPage() {
         pageObjectLinks = new PageObjectLinks(driver);
+
     }
 
 
@@ -60,6 +60,5 @@ public class LinksTest extends BaseTest{
         pageObjectLinks.clickReddit();
         assertTrue(driver.getCurrentUrl().contains("reddit.com"), "Не Reddit");
     }
-
 
 }

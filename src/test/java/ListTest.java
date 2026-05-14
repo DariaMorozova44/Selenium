@@ -1,7 +1,6 @@
-import org.example.PageObjectList;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pagetests.PageObjectList;
 
 import java.util.List;
 
@@ -10,9 +9,10 @@ import static org.testng.Assert.*;
 public class ListTest extends BaseTest {
     private PageObjectList pageObjectList;
 
-    @BeforeMethod
-    public void initPage() {
+    @Override
+    protected void initPage() {
         pageObjectList = new PageObjectList(driver);
+
     }
 
     @Test

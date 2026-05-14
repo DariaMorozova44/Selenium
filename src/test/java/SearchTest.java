@@ -1,6 +1,5 @@
-import org.example.PageObjectSearch;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pagetests.PageObjectSearch;
 
 import static org.testng.Assert.assertTrue;
 
@@ -8,9 +7,10 @@ public class SearchTest extends BaseTest {
 
     private PageObjectSearch pageObjectSearch;
 
-    @BeforeMethod
-    public void initPage() {
+    @Override
+    protected void initPage() {
         pageObjectSearch = new PageObjectSearch(driver);
+
     }
 
     @Test(dataProvider = "searchQueries", dataProviderClass = CsvDataProvider.class)
