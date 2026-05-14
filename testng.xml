@@ -3,11 +3,11 @@
 
     <test name="All Tests">
         <classes>
-            <class name="ThemeTest"/>
-            <class name="SearchTest"/>
-            <class name="ListTest"/>
-            <class name="PageTest"/>
-            <class name="LinksTest"/>
+            <class name="tests.ThemeTest"/>
+            <class name="tests.SearchTest"/>
+            <class name="tests.ListTest"/>
+            <class name="tests.PageTest"/>
+            <class name="tests.LinksTest"/>
         </classes>
     </test>
 

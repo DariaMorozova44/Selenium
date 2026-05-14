@@ -1,4 +1,4 @@
-package pagetests;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -13,7 +13,7 @@ public class BasePage {
     protected WebDriverWait wait;
 
     private static final By COOKIE_ACCEPT_BUTTON = By.xpath("//button[contains(text(),'Accept') or contains(text(),'Got it')]");
-    private static final By COOKIE_BANNER = By.className("ch2-container");
+    private static final By COOKIE_BANNER = By.xpath("//div[contains(@class, 'ch2-container')]");
 
     public BasePage(WebDriver driver) {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));

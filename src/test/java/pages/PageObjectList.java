@@ -1,4 +1,4 @@
-package pagetests;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +12,8 @@ public class PageObjectList extends BasePage {
 
     private final Random random = new Random();
 
-    private static final By TOC_CONTAINER = By.cssSelector("ul[data-test='toc']");
+    private static final By TOC_CONTAINER = By.xpath("//ul[@data-test='toc']");
+
 
     public PageObjectList(WebDriver driver) {
         super(driver);

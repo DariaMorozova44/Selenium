@@ -1,4 +1,4 @@
-package pagetests;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,9 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class PageObjectTheme extends BasePage {
 
-    private static final String DARK_THEME_CLASS = "theme-dark";
-    private static final String LIGHT_THEME_CLASS = "theme-light";
-
+    private static final By DARK_THEME = By.xpath("/html[contains(@class, 'theme-dark')]");
+    private static final By LIGHT_THEME = By.xpath("/html[contains(@class, 'theme-light')]");
 
     public PageObjectTheme(WebDriver driver) {
         super(driver);
@@ -23,19 +22,16 @@ public class PageObjectTheme extends BasePage {
 
     public boolean isDarkThemeActive() {
         WebElement html = wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("html")));
-        String bodyClass = html.getAttribute("class");
-        return bodyClass != null && bodyClass.contains(DARK_THEME_CLASS);
+        return !html.findElements(DARK_THEME).isEmpty();
     }
-
 
     public boolean isLightThemeActive() {
         WebElement html = wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("html")));
-        String bodyClass = html.getAttribute("class");
-        return bodyClass != null && html.getAttribute("class").contains(LIGHT_THEME_CLASS);
+        return !html.findElements(LIGHT_THEME).isEmpty();
     }
 
     public String getCurrentTheme() {
-        return isDarkThemeActive() ? "dark" : "light";
+        return isDarkThemeActive() ? "dark" : "light";   // ← возвращаем строку, а не By
     }
 }
 
