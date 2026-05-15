@@ -1,5 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Selenium Test Suite" parallel="classes" thread-count="3">
+    <parameter name="baseUrl"
+               value="https://www.jetbrains.com/help/youtrack/server/youtrack-docker-installation.html#run-youtrack-service"/>
 
     <test name="All Tests">
         <classes>

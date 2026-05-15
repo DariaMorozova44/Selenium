@@ -30,8 +30,5 @@ public class PageObjectTheme extends BasePage {
         return !html.findElements(LIGHT_THEME).isEmpty();
     }
 
-    public String getCurrentTheme() {
-        return isDarkThemeActive() ? "dark" : "light";   // ← возвращаем строку, а не By
-    }
 }
 

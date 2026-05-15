@@ -25,14 +25,6 @@ public class ListTest extends BaseTest {
     }
 
     @Test
-    public void testGetTocItemsCount() {
-        int count = pageObjectList.getTocItemsCount();
-        List<WebElement> items = pageObjectList.getTocItems();
-        assertEquals(count, items.size(), "Количество элементов, возвращаемое getTocItemsCount(), не совпадает с реальным размером списка");
-        assertTrue(count > 0, "Количество пунктов должно быть больше 0");
-    }
-
-    @Test
     public void testClickRandomTocItem() {
         String itemId = pageObjectList.clickRandomTocItem();
         assertNotNull(itemId, "Метод clickRandomTocItem() вернул null");

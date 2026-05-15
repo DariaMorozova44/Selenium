@@ -26,9 +26,7 @@ public class PageObjectList extends BasePage {
     }
 
 
-    public int getTocItemsCount() {
-        return getTocItems().size();
-    }
+
 
     public String clickRandomTocItem() {
         List<WebElement> items = getTocItems();
@@ -38,7 +36,7 @@ public class PageObjectList extends BasePage {
         int randomIndex = random.nextInt(items.size());
         WebElement randomItem = items.get(randomIndex);
         String itemId = randomItem.getAttribute("data-toc-scroll");
-        randomItem.click();
+        wait.until(ExpectedConditions.elementToBeClickable(randomItem)).click();
         return itemId;
     }
 

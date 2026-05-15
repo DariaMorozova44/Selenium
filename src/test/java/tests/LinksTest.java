@@ -1,5 +1,7 @@
 package tests;
 
+import org.openqa.selenium.By;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.PageObjectLinks;
 
@@ -14,53 +16,28 @@ public class LinksTest extends BaseTest {
 
     }
 
-
-    @Test
-    public void testContactUsLink() {
-        pageObjectLinks.clickContactUs();
-        assertTrue(driver.getCurrentUrl().contains("mailto:"), "Не mailto: ссылка");
+    @DataProvider(name = "socialLinks")
+    public Object[][] socialLinksData() {
+        return new Object[][]{
+                {PageObjectLinks.YOUTUBE,  "youtube.com"},
+                {PageObjectLinks.BLOG,     "blog.jetbrains.com"},
+                {PageObjectLinks.TWITTER,  "x.com"},
+                {PageObjectLinks.BLUESKY,  "bsky.app"},
+                {PageObjectLinks.FACEBOOK, "facebook.com"},
+                {PageObjectLinks.LINKEDIN, "linkedin.com"},
+                {PageObjectLinks.REDDIT,   "reddit.com"},
+                {PageObjectLinks.CONTACT_US, "mailto:mailto:youtrack-feedback@jetbrains.com"},
+        };
     }
 
-    @Test
-    public void testYouTubeLink() {
-        pageObjectLinks.clickYouTube();
-        assertTrue(driver.getCurrentUrl().contains("youtube.com"), "Не YouTube");
+    @Test(dataProvider = "socialLinks")
+    public void testSocialLinkOpensCorrectUrl(By locator, String expectedUrlPart) {
+        String originalUrl = driver.getCurrentUrl();
+        pageObjectLinks.click(locator);
+        wait.until(webDriver -> !webDriver.getCurrentUrl().equals(originalUrl));
+        assertTrue(driver.getCurrentUrl().contains(expectedUrlPart),
+                "URL не содержит " + expectedUrlPart);
     }
 
-    @Test
-    public void testBlogLink() {
-        pageObjectLinks.clickBlog();
-        assertTrue(driver.getCurrentUrl().contains("blog.jetbrains.com"), "Не блог");
-    }
-
-    @Test
-    public void testTwitterLink() {
-        pageObjectLinks.clickTwitter();
-        assertTrue(driver.getCurrentUrl().contains("twitter.com") || driver.getCurrentUrl().contains("x.com"), "Не Twitter/X");
-    }
-
-    @Test
-    public void testBlueskyLink() {
-        pageObjectLinks.clickBluesky();
-        assertTrue(driver.getCurrentUrl().contains("bsky.app"), "Не Bluesky");
-    }
-
-    @Test
-    public void testFacebookLink() {
-        pageObjectLinks.clickFacebook();
-        assertTrue(driver.getCurrentUrl().contains("facebook.com"), "Не Facebook");
-    }
-
-    @Test
-    public void testLinkedInLink() {
-        pageObjectLinks.clickLinkedIn();
-        assertTrue(driver.getCurrentUrl().contains("linkedin.com"), "Не LinkedIn");
-    }
-
-    @Test
-    public void testRedditLink() {
-        pageObjectLinks.clickReddit();
-        assertTrue(driver.getCurrentUrl().contains("reddit.com"), "Не Reddit");
-    }
 
 }

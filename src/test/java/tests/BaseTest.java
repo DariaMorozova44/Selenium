@@ -1,5 +1,6 @@
 package tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -9,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,10 +24,11 @@ public abstract class BaseTest {
     protected WebDriverWait wait;
 
     @BeforeMethod
-    protected void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/User/Downloads/chromedriver-win64/chromedriver.exe");
+    @Parameters("baseUrl")
+    protected void setUp(@Optional String baseUrl) {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("https://www.jetbrains.com/help/youtrack/server/youtrack-docker-installation.html#run-youtrack-service");
+        driver.get(baseUrl);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         initPage();
     }

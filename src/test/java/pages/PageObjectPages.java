@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class PageObjectPages extends BasePage { ;
+public class PageObjectPages extends BasePage {
     private static final By PREV_BUTTON = By.xpath("//a[@data-test='internal-link prev-page']");
     private static final By NEXT_BUTTON = By.xpath("//a[@data-test='internal-link next-page']");
 
